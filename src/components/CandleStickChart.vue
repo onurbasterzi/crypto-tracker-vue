@@ -1,9 +1,9 @@
 <template>
   <div class="candle-stick-chart">
-    <span>O: {{ cursorData.open | toFixed(2) }}</span>
-    <span>C: {{ cursorData.close | toFixed(2) }}</span>
-    <span>H: {{ cursorData.high | toFixed(2) }}</span>
-    <span>L: {{ cursorData.low | toFixed(2) }}</span>
+    <span>O: {{ parseFloat(cursorData.open) }}</span>
+    <span>C: {{ parseFloat(cursorData.close) }}</span>
+    <span>H: {{ parseFloat(cursorData.high) }}</span>
+    <span>L: {{ parseFloat(cursorData.low) }}</span>
   </div>
 </template>
 
@@ -34,10 +34,19 @@ export default {
     klines(this.$router.currentRoute.params.pairs.toUpperCase(), "15m").then((response) => {
       this.setCandleData([]);
       response.data.forEach((element) => {
-        this.pushCandleData({ time: dateUtcFormatter(element[0]), open: element[1], high: element[2], low: element[3], close: element[4] });
+        this.pushCandleData({ time: dateUtcFormatter(element[0]), open: parseFloat(element[1]), high: parseFloat(element[2]), low: parseFloat(element[3]), close: parseFloat(element[4]) });
       });
       const _candleStickChart = document.querySelector(".candle-stick-chart");
       const chart = createChart(_candleStickChart, {
+        priceFormat: {
+          type: "price",
+          precision: 6,
+          minMove: 0.000001,
+        },
+        rightPriceScale: {
+          mode: 1,
+          borderColor: "rgba(197, 203, 206, 0.4)",
+        },
         layout: {
           textColor: "#d1d4dc",
           backgroundColor: "#02012c",
@@ -77,6 +86,14 @@ export default {
           wickUpColor: "rgb(14, 203, 129)",
         })
       );
+
+      this.lineSeries.applyOptions({
+        priceFormat: {
+          type: "price",
+          precision: 6,
+          minMove: 0.000001,
+        },
+      });
 
       this.setLineSeriesData();
       initCandleStickSocket(this.klineEndPoint);

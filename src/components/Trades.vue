@@ -9,8 +9,8 @@
       </div>
       <hr />
       <div class="trade" v-for="data in getLastTrades" :key="data.id" :style="data.style == 'gain' ? 'color:rgb(14, 203, 129)' : 'color:rgb(246, 70, 93)'">
-        <div class="item">{{ data.price | toFixed(4) }}</div>
-        <div class="item">{{ data.quantity | toFixed(4) }}</div>
+        <div class="item">{{ parseFloat(data.price) }}</div>
+        <div class="item">{{ parseFloat(data.quantity)}}</div>
         <div class="item">{{ data.time }}</div>
       </div>
     </div>
@@ -28,7 +28,13 @@ export default {
     tradesEndPoint() {
       return `wss://stream.binance.com:9443/ws/${this.$router.currentRoute.params.pairs}@trade`;
     },
+
+    
   },
+
+  // filters:{
+  //   pa
+  // },
 
   methods: {
     ...mapMutations("trades", ["clearTrades", "setTrades"]),
@@ -45,7 +51,7 @@ export default {
         vm.setTrades({
           id: element.id,
           isBuyer: !element.isBuyerMaker,
-          price: parseFloat(element.price).toFixed(2),
+          price: parseFloat(element.price),
           quantity: element.qty,
           time: timeFormatter(element.time),
           symbol: this.$router.currentRoute.params.pairs,

@@ -11,12 +11,12 @@
           </div>
           <div class="details">
             <div class="percent color">{{ c.arrow }} {{ c.sign }}{{ c.percent | toFixed(2) }}%</div>
-            <div>{{ c.sign }}{{ c.change | toFixed(asset) }} 24h</div>
+            <div>{{ c.sign }}{{ parseFloat(c.change) }} 24h</div>
             <div>{{ c.assetVolume | toMoney }} </div>
           </div>
         </div>
         <div class="price">
-          <p>{{ c.close | toFixed(asset) }}</p>
+          <p>{{ parseFloat(c.close) }}</p>
         </div>
         <div>
           <LineChart :width="600" :height="60" :values="c.history" />

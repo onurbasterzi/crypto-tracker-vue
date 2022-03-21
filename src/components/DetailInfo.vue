@@ -8,10 +8,10 @@
       <div class="percent color">{{ coin.arrow }} {{ coin.sign }}{{ coin.percent | toFixed(2) }}%</div>
     </div>
     <div class="price">
-      <div>{{ coin.close | toFixed(coin.asset) }} {{ coin.asset }}</div>
+      <div>{{ parseFloat(coin.close) }} {{ coin.asset }}</div>
     </div>
     <div class="details">
-      <div>{{ coin.sign }}{{ coin.change | toFixed(coin.asset) }} - <span>24h</span></div>
+      <div>{{ coin.sign }}{{ parseFloat(coin.change)  }} - <span>24h</span></div>
       <div>{{ coin.assetVolume | toMoney }} - <span>Vol</span></div>
     </div>
   </div>
