@@ -1,0 +1,25 @@
+
+$loaderbg:rgba(0,0,0,.5);
+$dot: #909090;
+$line: #F8F8F8;
+
+$colorGain: rgb(87, 219, 87);
+$colorLoss: rgb(230, 0, 46);
+
+@mixin flex($direction: row, $justify:center,$align:center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+  }
+  
+  @mixin centered(){
+      margin: auto;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      top: 0;
+      right: 0;
+    }
+
+

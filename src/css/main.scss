@@ -1,0 +1,194 @@
+@import "./variables.scss";
+@import "./dropdown.scss";
+@import "./topbar.scss";
+@import "./card.scss";
+@import "./loader.scss";
+@import "./details.scss";
+@import "./trades.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap");
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: #010015;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.logo {
+  color: #fff;
+  margin-left: 40px;
+  cursor: pointer;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 1em 1em;
+  color: #000;
+  background-color: rgb(190, 190, 190);
+  border-radius: 5px;
+
+  &.dark {
+    background-color: rgb(190, 190, 190);
+  }
+  & > input {
+    width: auto;
+  }
+}
+
+.listView {
+  border-collapse: collapse;
+  tr {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border-bottom: 0.2px solid #fff;
+    cursor: pointer;
+    td {
+      padding: 10px;
+      color: #fff;
+
+      vertical-align: middle;
+      width: calc(100% / 6);
+
+      &.icon {
+        display: flex;
+        align-items: center;
+
+        div {
+          width: 100%;
+          margin-left: 20px;
+
+          span {
+            margin-right: 5px;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// price grid
+.content-wrapper {
+  color: #fff;
+  background-color: #010015;
+  padding: 30px;
+  padding-top: 100px;
+}
+
+.chart {
+  background-color: rgba(#000, 0.4);
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px 0;
+}
+
+.loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+
+  &.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.table-row,
+.crypto-card {
+  color: #fff;
+  cursor: pointer;
+  &.gain {
+    background-color: desaturate(darken($colorGain, 35%), 50%);
+    polyline.color {
+      stroke: $colorGain;
+    }
+    circle.color {
+      fill: $colorGain;
+    }
+    .color {
+      color: $colorGain !important;
+    }
+  }
+  &.loss {
+    background-color: desaturate(darken($colorLoss, 32%), 50%);
+    polyline.color {
+      stroke: $colorLoss;
+    }
+    circle.color {
+      fill: $colorLoss;
+    }
+    .color {
+      color: $colorLoss !important;
+    }
+  }
+}
+
+@media (max-width: 882px) {
+  .form-input {
+    padding: 0.5em 0.5em;
+    font-size: 12px;
+  }
+  .content-wrapper {
+    padding-top: 150px;
+  }
+}
+
+@media (max-width: 450px) {
+  .topbar {
+    position: static;
+  }
+  .content-wrapper {
+    padding: 10px;
+    padding-top: 30px;
+  }
+}
+
+// loader
+// .loader-wrap {
+//   display: none;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(#000, 0.8);
+//   text-align: center;
+//   z-index: 9999;
+
+//   &.visible {
+//     display: flex;
+//   }
+
+//   .loader-content {
+//     padding: $padSpace ($padSpace * 2);
+//     background-color: $colorDocumentLight;
+//     border-radius: $lineJoin;
+//     box-shadow: $shadowPaper;
+
+//     i {
+//       font-style: normal;
+//       font-size: 600%;
+//       line-height: normal;
+//     }
+//   }
+// }

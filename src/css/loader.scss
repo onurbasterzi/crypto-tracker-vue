@@ -1,0 +1,134 @@
+
+
+.loading {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $loaderbg;
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &.hide {
+    display: none;
+  }
+  
+  &.show {
+    display: flex;
+  }
+
+  p{
+      margin-top: 150px;
+  }
+
+  .container {
+    @include centered();
+    height: 300px;
+    width: 300px;
+
+    .dot {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 52.5%;
+      left: 150px;
+      height: 20px;
+      width: 20px;
+      background-color: $dot;
+      border-radius: 5rem;
+      transition: all 0.15s ease-in-out;
+
+      &:nth-child(1) {
+        left: 80px;
+        animation: waveUp 2s, smallExtend 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+
+      &:nth-child(2) {
+        left: 115px;
+        animation: waveUp 2s, largeExtend 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-delay: 0.15s;
+      }
+
+      &:nth-child(3) {
+        animation: waveUp 2s, smallExtend 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-delay: 0.3s;
+      }
+
+      &:nth-child(4) {
+        left: 185px;
+        animation: waveUp 2s, largeExtend 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-delay: 0.45s;
+      }
+
+      &:nth-child(5) {
+        left: 220px;
+        animation: waveUp 2s, smallExtend 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-delay: 0.6s;
+      }
+
+      @keyframes waveUp {
+        0%,
+        15% {
+          top: 50%;
+        }
+        45%,
+        65% {
+          top: 42.5%;
+        }
+        85%,
+        100% {
+          top: 50%;
+        }
+      }
+
+      @keyframes smallExtend {
+        0%,
+        8% {
+          background-color: $dot;
+          height: 20px;
+        }
+        14%,
+        34% {
+          background-color: $line;
+          height: 47.5px;
+        }
+        46%,
+        100% {
+          background-color: $dot;
+          height: 20px;
+        }
+      }
+
+      @keyframes largeExtend {
+        0%,
+        8% {
+          background-color: $dot;
+          height: 20px;
+        }
+        14%,
+        34% {
+          background-color: $line;
+          height: 82.5px;
+        }
+        46%,
+        100% {
+          background-color: $dot;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.trade-wrapper{
+    background-color: #02012c;
+    padding: 10px;
+    border-radius: 10px;
+   .trade{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+
+    div{
+        width: 33.33%;
+        text-align: right;
+
+        &.item{
+            font-size: 12px;
+        }
+    }
+} 
+}

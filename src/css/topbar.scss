@@ -1,0 +1,33 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+  background-color: 	#02012c;
+  position: fixed;
+  width: 100%;
+  .dropdowns {
+      display: flex;
+      &.hide{
+        display: none;
+      }
+    .dropdown {
+      margin: 10px;
+    }
+  }
+}
+
+@media (max-width: 882px) {
+  .logo{
+    margin-left:0px !important ;
+  }
+  .topbar{
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    padding: 20px 0;
+
+ 
+  }
+  
+}
